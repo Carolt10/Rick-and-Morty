@@ -12,9 +12,10 @@ class HomeController {
     final response = await homeApiRepository.getCharacters();
     List<CharacterDTO> characters = [];
 
-    final bool validateStatusCode = response.statusCode == 200;
-    if (validateStatusCode) {
+  
+    if (response.statusCode == 200) {
       final Map dataFromAPI = jsonDecode(response.body);
+  
       final List<dynamic> charactersResults = dataFromAPI['results'];
 
       characters = charactersResults
